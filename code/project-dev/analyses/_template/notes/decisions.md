@@ -3,6 +3,6 @@
 ## YYYY-MM-DD — initial design
 
 - Decision:
-- Evidence available at the time:
-- Alternatives rejected:
+- What we knew at the time:
+- Alternatives considered:
 - What would change this decision:

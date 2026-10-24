@@ -4,15 +4,15 @@ Status: planned
 Last updated: YYYY-MM-DD
 Owner/session:
 
-## Question and criterion
+## Question and pass/fail rule
 
-Copy the one-sentence question and exact decision rule from `plan.md`.
+Copy the question and pass/fail rule from `plan.md`.
 
 ## Current evidence
 
 No runs yet.
 
-## Jobs and artifacts
+## Jobs and files
 
 | item | ID/hash | state | path |
 |---|---|---|---|
@@ -22,6 +22,6 @@ No runs yet.
 
 - None yet.
 
-## Next action
+## Next step
 
-Run the smallest smoke test and record its output.
+Run the smallest smoke test and record what it gives.

@@ -1,3 +1,3 @@
 # Notebooks
 
-Use notebooks for demonstrations and interactive inspection. Move reusable logic into `src/project_name`, and make reported numbers reproducible from an analysis script. Clear or avoid large embedded outputs before committing.
+Use notebooks for demos and exploring. Move reusable code into `src/project_name`, and make sure any reported number can be reproduced from an analysis script. Clear large outputs before committing.

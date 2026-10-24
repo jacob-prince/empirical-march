@@ -1,3 +1,3 @@
-# Figure-specific cluster work
+# Cluster jobs for this figure
 
-Keep extraction/evaluation jobs required only for this figure here. Their outputs still need provenance and integrity checks before promotion into `preproc_data/`.
+Jobs needed only for this figure go here. Before copying their outputs into `preproc_data/`, record where they came from and check them.

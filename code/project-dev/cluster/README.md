@@ -1,7 +1,7 @@
 # Cluster files
 
-- `env.example.sh`: copy to a private cluster location as `env.sh` and edit paths; do not commit secrets.
-- `jobs/smoke_gpu.sbatch`: minimal CUDA and package smoke test.
-- `tools/submit_fast.sh`: test candidate partition/account pairs and submit to the earliest estimated start.
+- `env.example.sh`: copy to `env.sh` somewhere private on the cluster and edit the paths. Don't commit secrets.
+- `jobs/smoke_gpu.sbatch`: quick CUDA and package test.
+- `tools/submit_fast.sh`: tries each partition/account pair and submits to whichever starts soonest.
 
-Scientific jobs normally live inside the analysis that owns them (`analyses/takeN/NN_name/scripts/*.sbatch`). Shared launch policy and reusable infrastructure live here.
+Jobs for a specific analysis usually live in that analysis (`analyses/takeN/NN_name/scripts/*.sbatch`). Shared tools live here.

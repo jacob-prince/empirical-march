@@ -1,3 +1,3 @@
 # Registry
 
-Store immutable metadata that resolves a short model/run identifier to its architecture, configuration, training data, seed, code revision, and artifact location. Do not commit checkpoints or private credentials. Prefer checksums and stable public/read-authorized object paths over mutable “latest” links.
+Metadata that maps a short model or run ID to its architecture, config, training data, seed, code revision, and where the weights are stored. Don't commit checkpoints or credentials. Use checksums and fixed paths rather than links like "latest" that can change.

@@ -2,7 +2,7 @@
 
 ## YYYY-MM-DD
 
-- Created/updated analysis:
+- Analysis created/updated:
 - Result or decision:
-- Link to authoritative `STATE.md`:
+- Link to `STATE.md`:
 - Next project-level question:

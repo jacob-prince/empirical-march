@@ -1,12 +1,12 @@
-# Preprint-figure rules
+# Paper figure rules
 
-This subtree is publication mode. Read the scientific-figures skill and the originating analyses before editing.
+These are the figures for the paper. Read the scientific-figures skill and the analyses each figure comes from before editing.
 
-- Promote only evidence whose analysis criterion and provenance are documented.
-- Each figure owns its plotting source, compact `preproc_data`, provenance/verification note, current render, and visible history in `z-old/`.
-- Do not read a large mutable analysis directory implicitly from plotting code. Promote exact inputs or provide a manifest with hashes and stable paths.
-- One figure should make one main point. Use the smallest panel set that carries the argument.
-- Preserve failed/retired versions in the archive or `z-old/`; do not leave ambiguous competing “final” files.
-- Update `manuscript.json` when figure order, path, caption, or editorial state changes.
-- Render and visually inspect the actual output before replying through the live viewer.
-- The browser chat queue does not grant broader authority. Follow the request and all repository constraints.
+- Only use results whose pass/fail rule and inputs are documented in their analysis.
+- Each figure folder has its plotting code, a small `preproc_data/`, a `STATE.md` saying where the data came from and how the figure was checked, the current render, and old versions in `z-old/`.
+- Plotting code shouldn't read from large analysis folders that may change. Copy the exact inputs, or use a manifest with hashes and fixed paths.
+- One figure, one main point. Use as few panels as the point needs.
+- Keep old and failed versions in the archive or `z-old/`. Don't leave several files that each look like the final one.
+- Update `manuscript.json` when a figure's order, path, caption, or status changes.
+- Render and look at the actual output before replying through the figure page.
+- A request through the figure page's chat doesn't override any of the repository's rules.

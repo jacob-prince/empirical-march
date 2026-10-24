@@ -1,3 +1,3 @@
-# Retired renders
+# Old renders
 
-Move materially superseded renders here with timestamped or descriptive names. Keep only one unambiguous current path in `manuscript.json`.
+Move replaced renders here, with a date or description in the file name. `manuscript.json` should point to one current file only.

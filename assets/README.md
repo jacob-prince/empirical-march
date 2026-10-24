@@ -1,3 +1,3 @@
 # Assets
 
-Shared source artwork, diagrams, licensed images, and presentation assets. Record origin, license, and edits. Analysis-generated figures belong in their analysis folders.
+Shared artwork, diagrams, licensed images, and slide assets. Note where each came from, its license, and any edits. Figures made by analyses go in their analysis folders.

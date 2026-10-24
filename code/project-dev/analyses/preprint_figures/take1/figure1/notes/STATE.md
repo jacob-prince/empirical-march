@@ -5,15 +5,15 @@ Last updated: YYYY-MM-DD
 
 ## Claim
 
-Define the one point Figure 1 must establish.
+The one point Figure 1 has to make.
 
 ## Source analyses
 
-- `analyses/takeN/NN_question`: result file and criterion status.
+- `analyses/takeN/NN_question`: result file and whether it passed its pass/fail rule.
 
-## Promoted inputs
+## Input files
 
-| file | source | checksum/run ID | purpose |
+| file | source | checksum/run ID | used in |
 |---|---|---|---|
 | — | — | — | — |
 
@@ -21,12 +21,12 @@ Define the one point Figure 1 must establish.
 
 No render yet.
 
-## Verification
+## Checks
 
-- Data cross-check: pending
-- Full-resolution visual inspection: pending
-- Caption/provenance check: pending
+- Numbers checked against result files: pending
+- Looked at full resolution: pending
+- Caption and data sources checked: pending
 
-## Next action
+## Next step
 
-Promote the smallest verified input set and implement `figure1.py`.
+Copy the smallest set of checked inputs into `preproc_data/` and write `figure1.py`.

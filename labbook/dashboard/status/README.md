@@ -1,3 +1,3 @@
-# Dashboard status records
+# Dashboard status files
 
-Optional small JSON summaries for the local dashboard. Each record should name an analysis folder and its `STATE.md`; never maintain an independent competing status narrative here.
+Optional small JSON summaries for the dashboard. Each one names an analysis folder and its `STATE.md`. Don't keep a separate status story here.

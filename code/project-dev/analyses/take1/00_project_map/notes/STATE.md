@@ -3,22 +3,22 @@
 Status: planned
 Last updated: YYYY-MM-DD
 
-## Question and criterion
+## Question and pass/fail rule
 
-Can a fresh collaborator recover the project's substrate and first decisive question from the repository alone?
+Can a new collaborator find the project's data, models, and first main question from the repository alone?
 
 ## Current evidence
 
-The template hierarchy and operating contracts exist. Project-specific data, model, and claim information still need to be filled in.
+The template folders and rules exist. Project-specific data, models, and claims still need to be filled in.
 
-## Jobs and artifacts
+## Jobs and files
 
-No compute jobs. The repository README and scoped instruction files are the current artifacts.
+No cluster jobs. The current files are the root README and the `AGENTS.md` files.
 
 ## Decisions and caveats
 
-- This folder is documentation-only until instantiated for a real project.
+- This folder is just documentation until it is filled in for a real project.
 
-## Next action
+## Next step
 
-Rename the project/package, fill the substrate map, then create `01_<first_question>` with `scripts/new_analysis.py`.
+Rename the project and package, fill in the project map, then make `01_<first_question>` with `scripts/new_analysis.py`.

@@ -1,131 +1,131 @@
-# Figure lifecycle, provenance, and manuscript promotion
+# Making a figure, start to finish
 
-Use this reference for any figure that enters an analysis report, meeting decision, or preprint take.
+Use this for any figure that goes into an analysis report, a meeting, or the paper.
 
-## 1. Define the evidentiary job
+## 1. Decide what the figure is for
 
 Before plotting, write one sentence for each:
 
 - the question the figure answers;
-- the primary comparison and metric;
-- the pre-stated decision criterion;
-- the one conclusion the complete figure may support;
-- the strongest caveat or alternative explanation.
+- the main comparison and metric;
+- the pass/fail rule;
+- the one conclusion the figure can support;
+- the biggest caveat or alternative explanation.
 
-If the proposed panels answer multiple independent questions, split the figure or justify the grouping.
+If the panels answer several unrelated questions, split the figure or explain why they belong together.
 
-## 2. Freeze the roster and selection rules
+## 2. Fix the inputs and selection rules
 
-Record before choosing examples or running a large render:
+Before choosing examples or running a big render, write down:
 
 - dataset, split, preprocessing, and sample count;
-- model/checkpoint hashes and human-readable labels;
-- seeds/subjects and the unit of replication;
-- exclusions and missing-data handling;
-- example-selection rule;
-- uncertainty/statistical method;
-- chance/reference definition.
+- model or checkpoint hashes and their labels;
+- seeds or subjects, and what counts as a replicate;
+- exclusions and how missing data are handled;
+- how examples are chosen;
+- how uncertainty is computed;
+- what chance or the reference level is.
 
-Use representative or rule-selected examples. If an example is hand-chosen for pedagogy, say so and verify that it does not contradict the distribution.
+Use typical examples or examples picked by a rule. If you hand-pick an example to explain something, say so, and check that it isn't unusual.
 
-## 3. Establish the data boundary
+## 3. Know where the data come from
 
-An analysis figure reads its owning `results/` files. A preprint figure reads compact promoted inputs under `preproc_data/` or a manifest that points to immutable external artifacts.
+An analysis figure reads its own `results/` files. A paper figure reads small copied inputs in `preproc_data/`, or a manifest that points to files that won't change.
 
-For each promoted input, record:
+For each copied input, record:
 
-| field | requirement |
+| field | what to write |
 |---|---|
 | source analysis | numbered folder and result file |
-| production identity | job ID, checkpoint/model hash, seed, code commit |
-| selection/transformation | exact filtering, aggregation, or preprocessing |
-| integrity | checksum, record count, dimensions, or another stable check |
-| role | panel(s) that consume it |
+| how it was made | job ID, checkpoint/model hash, seed, code commit |
+| processing | filtering, averaging, or other steps applied |
+| check | checksum, row count, array shape, or similar |
+| used in | which panel(s) |
 
-Never use an undocumented value typed into the plot script. Never rely on a mutable `latest`, scratch glob, or private notebook state as the only source.
+Never use a number typed into the plot script without a record of where it came from. Never use a `latest` link, a scratch folder, or notebook state as the only source.
 
-## 4. Design the panel argument
+## 4. Plan the panels
 
-A common sequence is:
+A common order is:
 
-1. **What was shown or manipulated?** Real example or schematic.
-2. **What was measured?** Visual definition of the response/metric if it is not obvious.
-3. **What is the primary result?** Full roster, uncertainty, and reference.
-4. **Does the interpretation survive the decisive control?** Only controls needed for the claim.
+1. **What was shown or changed?** A real example or a schematic.
+2. **What was measured?** A picture of the measure, if it isn't obvious.
+3. **What is the main result?** All models, with error bars and a reference.
+4. **Does it hold up under the key control?** Only the controls the claim needs.
 
-Do not add panels because the result already exists. A useful supplementary figure may be better than a crowded main figure.
+Don't add a panel just because the result exists. A supplementary figure is often better than a crowded main figure.
 
-## 5. Implement from shared primitives
+## 5. Build from shared code
 
-- Import typography, dimensions, semantic colors, model order, panel letters, grids, and save behavior from the shared style module.
-- Keep data loading/aggregation separate from drawing when the computation is non-trivial.
-- Make the render command deterministic and runnable from the project root.
-- Save the current render to one stable, documented path. Timestamp or move materially different retired versions into `z-old/`.
+- Import fonts, sizes, colors, model order, panel letters, grids, and save settings from the shared style module.
+- Keep data loading and averaging separate from plotting when the computation isn't trivial.
+- Make the render command repeatable and runnable from the project root.
+- Save the current render to one fixed path. Move clearly different old versions to `z-old/`, with a date or description in the name.
 
-## 6. Caption from the same data
+## 6. Write the caption from the same data
 
-Use this structure:
+Structure:
 
-1. **Bold declarative lead:** the narrow result the figure establishes.
-2. `(a) ...` through `(n) ...`: what each panel shows; define marks, error bars, sample size, reference lines, abbreviations, and any selection.
-3. **Reading:** one or two sentences connecting the panels to the criterion.
-4. **Caveat:** the main boundary or failure that changes interpretation.
+1. **Bold first sentence:** the specific result the figure shows.
+2. `(a) ...` through `(n) ...`: what each panel shows. Define markers, error bars, sample size, reference lines, abbreviations, and how anything was selected.
+3. **Reading:** one or two sentences linking the panels to the pass/fail rule.
+4. **Caveat:** the main limit or failure that affects the reading.
 
-Generate key counts and numbers from result files when possible. A caption is not verified merely because it describes the visible marks; cross-check it against the stored data.
+Pull counts and key numbers from the result files when you can. A caption that matches what the plot shows still needs to be checked against the stored data.
 
-## 7. Render and inspect
+## 7. Render and look
 
-Render at 88 or 180 mm width and the intended final height. Then inspect:
+Render at 88 or 180 mm wide and the intended final height. Then look at:
 
-- the full image at normal reading scale;
-- the full-resolution image;
-- crops of dense regions, small legends, and title/panel-letter boundaries;
+- the whole image at normal size;
+- the image at full resolution;
+- zoomed crops of dense areas, small legends, and the edges of titles and panel letters;
 - stimulus detail and map overlays;
-- the caption beside the figure in its actual report/viewer.
+- the caption next to the figure in the actual report or page.
 
-Check these invariants:
+Check that:
 
-- no overlaps or clipping;
-- no large accidental dead space;
-- all text legible at final size;
-- panel letters and reading order correct;
-- legends and labels agree with central definitions;
-- compared axes/scales actually match;
-- uncertainty and `n` agree with results;
-- the weakest baseline and chance/reference are visible;
-- the conclusion remains true without relying on the chosen example.
+- nothing overlaps or is clipped;
+- there are no large empty areas;
+- all text is readable at final size;
+- panel letters and reading order are right;
+- legends and labels match the shared definitions;
+- axes and color scales that should match do match;
+- error bars and `n` match the results;
+- the weakest baseline and chance or reference are visible;
+- the conclusion still holds without relying on the chosen example.
 
-Re-render after every layout-affecting change. Inspection of an earlier version does not validate the new render.
+Re-render after every layout change. Checking an earlier version doesn't count for the new one.
 
-## 8. Integrate with reports and the live manuscript viewer
+## 8. Put it in the report or paper
 
 For an analysis figure:
 
-- place the PNG in `figures/` and source in `scripts/`;
-- update the caption/report source;
-- rebuild and inspect `report.html`;
+- put the PNG in `figures/` and the code in `scripts/`;
+- update the caption or report text;
+- rebuild and look at `report.html`;
 - update `notes/STATE.md` with the result and decision.
 
-For a preprint figure:
+For a paper figure:
 
-- keep source, `preproc_data/`, `notes/STATE.md`, figure-specific `cluster/`, and `z-old/` under `figureN/`;
-- update the current relative PNG path, heading, caption, source, and notes in `manuscript.json`;
-- start the localhost viewer and verify the page refreshes;
-- if working through the viewer chat, call `working.sh` before the edit and `reply.sh`/`say.sh` only after the render and page are verified.
+- keep the code, `preproc_data/`, `notes/STATE.md`, `cluster/`, and `z-old/` inside `figureN/`;
+- update the PNG path, heading, caption, source, and notes in `manuscript.json`;
+- start the local figure page and check that it refreshes;
+- if working through the page's chat, call `working.sh` before editing and `reply.sh` only after you have checked the render and the page.
 
-The chat request does not replace documentation. Any scientific decision made during the edit belongs in the figure or analysis state file.
+A chat request doesn't replace the notes. Any scientific decision made while editing goes in the figure's or analysis's `STATE.md`.
 
-## 9. Handoff record
+## 9. Handoff notes
 
-Before declaring the figure done, `notes/STATE.md` should include:
+Before calling the figure done, `notes/STATE.md` should list:
 
-- the claim and originating analyses;
-- current render and source paths;
-- promoted inputs and provenance checks;
+- the claim and the analyses it comes from;
+- the current render and code paths;
+- the copied inputs and how they were checked;
 - the render command;
-- numerical cross-checks performed;
-- visual inspection performed and at what resolution;
-- known caveats or failed variants;
-- the next editorial/scientific action.
+- the number checks you did;
+- the visual checks you did, and at what resolution;
+- known caveats and failed versions;
+- the next editing or scientific step.
 
-“Looks good” is not a sufficient verification record.
+"Looks good" is not enough.

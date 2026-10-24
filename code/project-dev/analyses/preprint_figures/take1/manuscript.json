@@ -1,14 +1,14 @@
 {
   "title": "Project manuscript figures, take1",
-  "plan": "State the smallest coherent publishable claim here. The ordered figures should form an argument, not a chronology of everything attempted.",
+  "plan": "State the main claim of the paper here. The figures should build an argument, not list everything that was tried.",
   "figures": [
     {
       "id": "figure1",
-      "heading": "Figure 1: Define the substrate and the central test.",
+      "heading": "Figure 1: The setup and the main test.",
       "png": "",
       "source": "figure1/figure1.py",
-      "caption": "Replace this with a declarative lead and one concise description per panel. State the data, model roster, sample size, uncertainty, and the result without overstating it.",
-      "notes": "Editorial and provenance notes live here. Detailed current state belongs in figure1/notes/STATE.md."
+      "caption": "Replace this with a bold first sentence stating the result, then one short description per panel. Give the data, models, sample size, and error bars, and don't overstate the result.",
+      "notes": "Editing notes go here. Detailed status goes in figure1/notes/STATE.md."
     }
   ],
   "retired": []

@@ -1,5 +1,5 @@
 # Preprint figures
 
-Each `takeN` is one live attempt to compress the empirical record into a coherent manuscript argument. A new take is appropriate when the figure sequence or central claim changes materially; do not erase earlier takes.
+Each `takeN` is one version of the paper's figures. Start a new take when the figure order or main claim changes a lot. Don't delete earlier takes.
 
-The included `take1` contains the local HTML viewer and a single empty figure scaffold.
+`take1` includes the local figure page and one empty figure folder.

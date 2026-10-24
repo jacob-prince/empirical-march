@@ -1,20 +1,20 @@
 # Scientific figure house style
 
-Use this reference for analysis and manuscript figures. Project-specific style helpers and accepted reference figures override generic defaults, but deviations should be deliberate and recorded.
+Use this for analysis and paper figures. If the project has its own style module or accepted figures, those win over these defaults. Write down any deviation.
 
 ## Visual target
 
-The target is a sparse, figure-first manuscript look, readable without knowing the project.
+Figures should be sparse and readable by someone who doesn't know the project.
 
-- Prefer a few large, coherent panels over a mosaic of small plots.
-- Use real example stimuli when possible. Avoid cartoon substitutes for inputs the model actually saw.
-- Keep data panels nearly sentence-free: short titles, short axis labels, compact legends, and necessary annotations only.
-- Put methods, interpretation, and headline numbers in the caption/report.
-- Use a stable visual grammar across the paper so the reader learns the colors, marks, and architectural icons once.
+- Use a few large panels rather than many small plots.
+- Show real stimuli when possible, not cartoons of what the model saw.
+- Keep sentences out of data panels: short titles, short axis labels, small legends, and only the annotations you need.
+- Put methods, interpretation, and headline numbers in the caption or report.
+- Use the same colors, markers, and icons throughout the paper so the reader only has to learn them once.
 
 ## Physical geometry
 
-Author at final print size rather than shrinking an oversized canvas later.
+Make the figure at its final print size. Don't make it big and shrink it later.
 
 | element | default |
 |---|---:|
@@ -23,7 +23,7 @@ Author at final print size rather than shrinking an oversized canvas later.
 | typical height | 60-130 mm, chosen by content |
 | output | RGB PNG, white background, 300 dpi |
 
-Use the smallest height that avoids crowding. Fix dead space with panel ratios, axis limits, or layout—not by filling it with extra text.
+Use the smallest height that doesn't feel crowded. Fix empty space by changing panel sizes, axis limits, or layout, not by adding text.
 
 ## Type and line scale
 
@@ -54,7 +54,7 @@ Figure and panel titles name the analysis, not the outcome.
 - Bad title: `Model A is significantly better`
 - Bad title: `Accuracy, targeting, and ablation results across seven models`
 
-Prefer a centered two-line panel title: a short noun phrase plus an optional smaller qualifier. Do not put methods, pass numbers, or results in titles.
+Use a centered panel title: a short noun phrase, with an optional smaller second line. Don't put methods, pass numbers, or results in titles.
 
 ## Axes and grids
 
@@ -62,20 +62,20 @@ Prefer a centered two-line panel title: a short noun phrase plus an optional sma
 - Use outward ticks and a light gray y-grid (`alpha` about 0.35, line width about 0.5 pt).
 - Add a faint zero line when meaningful.
 - Use short noun-phrase labels with the metric or unit: `Pearson r`, `Accuracy`, `Distance (deg)`.
-- Set limits from the scientific scale, not only the observed values. Chance-level and negative results must remain visible.
+- Set axis limits from the meaningful range, not just the data range. Chance and negative values must stay visible.
 - Avoid dual axes unless there is no clearer alternative.
 - Use frameless legends or direct labels near line endpoints.
 
 ## Models, conditions, and baselines
 
-Define labels, order, and colors once in the shared style module.
+Define labels, order, and colors once, in the shared style module.
 
-- Labels state what scientifically differs, not pilot numbers, run IDs, or hashes.
+- Labels say what is different about the model, not pilot numbers, run IDs, or hashes.
 - Order models weakest to strongest: untrained/reference floors, feedforward/ablated baselines, then full models.
 - Use gray for references and weak baselines; use a stable saturated progression such as purple → magenta → orange → green for ordered model families.
-- Include weak baselines in every panel where the metric is defined. If a metric is undefined for a model, filter it through one shared availability rule and state why.
+- Include weak baselines in every panel where the metric applies. If a metric doesn't apply to a model, leave it out using one shared rule, and say why.
 - Draw chance, uniform, or reference lines as dashed gray lines with a small direct label.
-- Color categorical tick labels by the condition/model they name when that improves reading; rotate only when necessary.
+- Color tick labels by the model or condition they name when that helps. Only rotate them if you have to.
 
 Do not reorder conditions by observed performance unless the ordering itself is the declared analysis.
 
@@ -83,11 +83,11 @@ Do not reorder conditions by observed performance unless the ordering itself is 
 
 - Show the summary statistic with the uncertainty interval defined by the analysis plan.
 - When per-seed, per-subject, or per-item values exist and remain readable, show translucent jittered points behind the summary.
-- Distinguish biological subjects, model seeds, and repeated trials; do not visually imply that trials are independent subjects.
+- Keep subjects, model seeds, and repeated trials distinct. Don't make trials look like independent subjects.
 - State exactly what error bars represent.
 - Do not print values on every bar. Put exact headline values in the caption or a table.
 
-Prefer points/intervals or lines to bars when they show ordering, paired structure, or distributions more honestly.
+Points with error bars, or lines, are often better than bars for showing order, paired data, or distributions.
 
 ## Heatmaps and maps
 
@@ -99,24 +99,24 @@ Prefer points/intervals or lines to bars when they show ordering, paired structu
 
 ## Schematic panels
 
-When the reader needs the experimental or model logic, use panel **a** as the schematic.
+When the reader needs to understand the experiment or model first, make panel **a** a schematic.
 
 - Walk left-to-right through stimulus → model/manipulation → measurement/readout.
 - Use real stimuli and the same geometry used by the model.
 - Use numbered black step circles or another restrained sequence cue only when the temporal order matters.
 - Use bold flow arrows and stable architectural colors: give each component one color and keep it across every figure.
 - Keep labels to a few words. Name the data panels the schematic feeds, such as `(b, c)`.
-- Avoid decorative brain icons or architectural detail that does not affect the test.
+- Skip decorative brain icons and model details that don't matter for the test.
 
 ## Panel composition
 
-- Put panels in the reader's causal or processing order, not the order scripts were written.
+- Order panels the way the reader should follow them, not the order the scripts were written.
 - Align comparable axes and plot areas.
 - Use lowercase bold panel letters at the upper left, outside the plotting area, one size larger than panel titles.
 - Keep legends, colorbars, and labels from creating uneven panel widths.
 - Use whitespace to separate conceptual groups, not to pad the page.
 
-## Forbidden patterns
+## Don't
 
 - Result sentences or methods paragraphs inside panels.
 - Value labels on every bar/point.
@@ -125,4 +125,4 @@ When the reader needs the experimental or model logic, use panel **a** as the sc
 - Cropped axes that hide a baseline or exaggerate a small effect.
 - Separate heatmap scales for panels presented as direct comparisons.
 - JPEG plot exports, screenshots of plots, or uninspected notebook renders.
-- Agent/vendor attribution inside scientific figures.
+- Agent or tool credits inside figures.

@@ -2,20 +2,20 @@
 
 ## Question
 
-State the question in plain language.
+The question in plain language.
 
 ## Design
 
-State the comparison, model/data roster, sample size, and pre-stated criterion.
+The comparison, models and data, sample size, and pass/fail rule.
 
 ## Evidence
 
-Add each figure with a concise caption and link its source/result.
+Each figure with a short caption and a link to its script and result file.
 
 ## Result and decision
 
-Separate the observed result from the interpretation. State pass/fail/inconclusive and the next question.
+What was observed, kept separate from the interpretation. Pass, fail, or inconclusive, and the next question.
 
-## Provenance and caveats
+## Inputs and caveats
 
-List job IDs, hashes, seeds, deviations, and known limitations.
+Job IDs, hashes, seeds, changes to the plan, and known limitations.

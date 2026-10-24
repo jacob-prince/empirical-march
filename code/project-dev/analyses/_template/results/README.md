@@ -1,3 +1,3 @@
 # Results
 
-Keep small machine-readable summaries, tables, manifests, and checksums here. Large tensors and raw datasets live in documented external storage.
+Small summaries, tables, manifests, and checksums go here. Large arrays and raw data go on external storage, with the path written down.

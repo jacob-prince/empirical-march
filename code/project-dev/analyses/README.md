@@ -1,5 +1,5 @@
 # Analyses
 
-`take1`, `take2`, and later takes are chronological empirical programs. Inside a take, folder numbers encode the order in which questions were asked, not a polished paper outline. `_template` is copied by `scripts/new_analysis.py`.
+`take1`, `take2`, and so on are rounds of analyses in the order they were done. Inside a take, folder numbers show the order questions were asked, not the order of the paper. `scripts/new_analysis.py` copies `_template` to make a new folder.
 
-The separate `preprint_figures` tree is where validated results are compressed into a manuscript narrative.
+The `preprint_figures` folder is where finished results are turned into paper figures.

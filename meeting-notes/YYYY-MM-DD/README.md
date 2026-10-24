@@ -1,17 +1,17 @@
 # YYYY-MM-DD meeting
 
-## Materials shown
+## Shown
 
 - Analysis/report:
 
 ## Decisions
 
-- Decision and owner:
+- Decision and who owns it:
 
 ## Questions raised
 
-- Question and corresponding next analysis folder:
+- Question and the analysis folder that will answer it:
 
 ## Follow-up
 
-- [ ] Copy durable decisions into the owning analysis notes.
+- [ ] Copy decisions into the analysis notes.

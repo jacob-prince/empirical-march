@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the template's durable project contracts using only the standard library."""
+"""Check that the repository has the expected folders and files (standard library only)."""
 
 from pathlib import Path
 import json

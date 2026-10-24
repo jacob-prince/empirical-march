@@ -1,10 +1,10 @@
-# Development-project rules
+# Code rules
 
-This directory is the executable scientific project. Read the repository `AGENTS.md` first.
+This folder is the project code. Read the root `AGENTS.md` first.
 
-- Keep importable logic in `src/project_name`; analysis scripts should call shared logic rather than duplicate it.
-- Add or update tests when changing shared behavior.
-- Notebooks demonstrate and inspect; they are not the only source of an algorithm or reported number.
-- Keep model/run metadata in `registry/`, with immutable hashes and artifact provenance. Do not commit weights.
-- Shared software changes and analysis-specific changes are separate concerns. An analysis task does not authorize a broad refactor.
-- Run `python3 scripts/validate_structure.py` before handoff.
+- Put reusable code in `src/project_name`. Analysis scripts should call it rather than copy it.
+- Add or update tests when you change shared code.
+- Notebooks are for demos and poking around. They should never be the only copy of a method or a reported number.
+- Keep model/run metadata in `registry/`, with fixed hashes and where the weights are stored. Don't commit weights.
+- Changes to shared code and changes for one analysis are separate tasks. Working on an analysis is not a reason for a big refactor.
+- Run `python3 scripts/validate_structure.py` before handing off.

@@ -1,3 +1,3 @@
 # take1
 
-The first empirical program. Folder numbers record the order in which questions were asked. Start a new take only when the organizing question or evidentiary regime changes.
+The first round of analyses. Folder numbers show the order questions were asked. Only start a new take when the main question or the kind of evidence changes.

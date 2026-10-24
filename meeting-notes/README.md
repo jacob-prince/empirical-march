@@ -1,3 +1,3 @@
 # Meeting notes
 
-Create one `YYYY-MM-DD/` directory per meeting or decision checkpoint. Store notes, figures/reports shown, decisions, open questions, and the resulting analysis numbers. Copy durable scientific decisions into the relevant analysis `notes/decisions.md`; do not leave them only in a meeting transcript.
+Make one `YYYY-MM-DD/` folder per meeting. Save notes, the figures or reports shown, decisions, open questions, and the analysis numbers that came out of it. Copy scientific decisions into the relevant analysis's `notes/decisions.md` too, so they aren't only in meeting notes.

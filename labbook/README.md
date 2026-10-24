@@ -1,5 +1,5 @@
 # Labbook
 
-The labbook is the cross-analysis chronological record. Keep one concise entry per meaningful transition and link to the owning analysis instead of duplicating its full state.
+A project-wide log in date order. Add a short entry when something important happens, and link to the analysis instead of copying its full status.
 
-The optional `dashboard/` is a static, local overview assembled from small status files. It is not the source of truth; analysis `STATE.md` files are.
+`dashboard/` is an optional local overview built from small status files. The analysis `STATE.md` files are the real record, not the dashboard.

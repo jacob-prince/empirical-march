@@ -2,30 +2,30 @@
 
 ## Question
 
-What exact scientific question does this analysis answer?
+What question does this analysis answer?
 
 ## Why now
 
-Which prior result or meeting decision makes this the next question?
+Which earlier result or meeting decision led to this question?
 
 ## Fixed inputs
 
 - Dataset and split:
-- Model/checkpoint roster:
+- Models/checkpoints:
 - Seeds:
 - Code revision:
 - Exclusions:
 
 ## Comparison and metric
 
-Name the primary contrast, unit of analysis, metric, and uncertainty calculation.
+The main comparison, unit of analysis, metric, and how uncertainty is computed.
 
-## Pre-stated decision rule
+## Pass/fail rule
 
 - Pass:
 - Fail:
 - Inconclusive:
-- Scale-up gate:
+- What has to be true before scaling up:
 
 ## Expected outputs
 

@@ -1,5 +1,5 @@
 # Literature
 
-Keep reading notes, citation manifests, lawful local copies, and extracted facts here. Each note should distinguish direct evidence from project interpretation and include a stable citation/DOI/URL.
+Reading notes, citation lists, local copies of papers (where allowed), and key facts from papers. In each note, keep what the paper shows separate from how it relates to our project, and include a citation, DOI, or URL.
 
-Large paper collections may remain outside Git; track them with `MANIFEST.md`.
+Large paper collections can stay outside Git; list them in `MANIFEST.md`.

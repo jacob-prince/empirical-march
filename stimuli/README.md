@@ -1,3 +1,3 @@
 # Stimuli
 
-Shared stimulus assets and provenance. Record generator, random seed, source dataset, class/item selection, preprocessing, license, and which analyses consumed each set. Do not duplicate protected or large datasets in Git.
+Shared stimuli and where they came from. For each set, record how it was generated, the random seed, source dataset, which classes or items were picked, preprocessing, license, and which analyses used it. Don't copy protected or large datasets into Git.

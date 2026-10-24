@@ -1,3 +1,3 @@
 # Scripts
 
-Optional: generate a project-map schematic or validate external artifact manifests. Scientific experiments start in the next numbered analysis.
+Optional: code to draw a project schematic or check external file manifests. Experiments start in the next numbered analysis.

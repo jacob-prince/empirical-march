@@ -1,10 +1,10 @@
 # Preprint figures, take1
 
-This is a generic live-editable manuscript page.
+A local page for viewing and editing the paper figures.
 
 ```bash
 python3 server.py 8767
 # open http://127.0.0.1:8767
 ```
 
-Edit text in place and save. Chat messages and save records enter `inbox.jsonl`. An active agent watches that file, edits sources or `manuscript.json`, rebuilds figures, and responds with `reply.sh` (`say.sh` also works). See the repository `docs/FIGURE_VIEWER.md`.
+Edit text on the page and click Save. Chat messages and saves are added to `inbox.jsonl`. An agent watches that file, edits the code or `manuscript.json`, re-renders figures, and replies with `reply.sh` (`say.sh` also works). See `docs/FIGURE_VIEWER.md` in the repository root.

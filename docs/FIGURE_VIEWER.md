@@ -1,18 +1,18 @@
-# Live figure viewer and agent-edit loop
+# Live figure page
 
-The viewer lives in `code/project-dev/analyses/preprint_figures/take1`. It is a local manuscript surface backed entirely by ordinary files.
+The figure page lives in `code/project-dev/analyses/preprint_figures/take1`. It is a local web page that reads and writes ordinary files.
 
 ## Files
 
-- `manuscript.json`: source of truth for title, plan, ordered figures, captions, notes, and archive.
-- `index.html`: editable manuscript page plus chat pane.
-- `server.py`: localhost-only HTTP server; reads/writes the document atomically and exposes inbox/outbox/status endpoints.
-- `inbox.jsonl`: saved edits and chat messages sent from the page; ignored by Git.
-- `outbox.jsonl`: agent replies; ignored by Git.
-- `status.json`: idle/working state; ignored by Git.
-- `working.sh`: agent announces the task in progress.
-- `reply.sh`: agent posts a response and returns status to idle; `say.sh` is a compatibility alias.
-- `watch_inbox.py`: optional terminal watcher for new requests.
+- `manuscript.json`: title, plan, figure order, captions, notes, and retired figures.
+- `index.html`: the editable page and chat pane.
+- `server.py`: local server. Reads and writes `manuscript.json` and handles the inbox, outbox, and status files.
+- `inbox.jsonl`: saved edits and chat messages from the page (ignored by Git).
+- `outbox.jsonl`: agent replies (ignored by Git).
+- `status.json`: idle or working (ignored by Git).
+- `working.sh`: the agent calls this to say what it is working on.
+- `reply.sh`: the agent calls this to reply and set the status back to idle. `say.sh` does the same thing.
+- `watch_inbox.py`: optional terminal watcher that prints new requests.
 
 ## Start
 
@@ -22,42 +22,42 @@ python3 server.py 8767
 # open http://127.0.0.1:8767
 ```
 
-The server binds only to `127.0.0.1`. Do not bind it publicly: it can edit `manuscript.json` and serve figure files from the preprint subtree.
+The server only listens on `127.0.0.1`. Don't expose it publicly, since it can edit `manuscript.json` and serve files from the preprint folder.
 
-## Work with an agent
+## Working with an agent
 
-In the active Codex or Claude task, say:
+In your Claude Code or Codex session, say something like:
 
-> Watch `analyses/preprint_figures/take1/inbox.jsonl`. For each new request, call `working.sh`, edit the figure source or manuscript, render and inspect the output, update `manuscript.json`, then call `reply.sh` with the result.
+> Watch `analyses/preprint_figures/take1/inbox.jsonl`. For each new request, call `working.sh`, edit the figure code or manuscript, render and look at the output, update `manuscript.json`, then call `reply.sh` with what you did.
 
-The optional watcher shows incoming records:
+To see incoming requests in a terminal:
 
 ```bash
 python3 watch_inbox.py
 ```
 
-The page does not invoke a model API. It is a transparent communication queue between a browser and an already-authorized agent session. That is intentional: no API key or agent credential is stored in the repository.
+The page doesn't call a model API. It passes messages between the browser and the agent session you already have open, so no API keys are stored in the repository.
 
 ## Edit loop
 
-1. The user edits a heading, caption, or note and clicks **Save**, or sends a chat message.
-2. The server atomically writes `manuscript.json` and appends a compact record to `inbox.jsonl`.
+1. You edit a heading, caption, or note and click **Save**, or send a chat message.
+2. The server writes `manuscript.json` and adds a short record to `inbox.jsonl`.
 3. The agent reads the request and calls `./working.sh "rebuilding Figure 2"`.
-4. The agent edits source/data, runs the figure script, visually inspects the render, and updates the figure path/caption in `manuscript.json`.
-5. The agent calls `./reply.sh "Figure 2 rebuilt; shortened the caption and corrected the shared color scale."`.
-6. Browser polling sees the document version change, refreshes the figure, displays the reply, and returns the status dot to idle.
+4. The agent edits the code or data, runs the figure script, looks at the render, and updates the figure path or caption in `manuscript.json`.
+5. The agent calls `./reply.sh "Figure 2 rebuilt; shortened the caption and fixed the shared color scale."`.
+6. The page sees the change, reloads the figure, shows the reply, and sets the status back to idle.
 
-If the user has unsaved browser edits while the document changes on disk, the page warns instead of silently replacing them.
+If you have unsaved edits in the browser when the file changes on disk, the page warns you instead of overwriting them.
 
-## Figure-folder contract
+## Figure folders
 
-Each `figureN/` owns:
+Each `figureN/` holds:
 
-- the assembly/plotting source;
-- `preproc_data/` with compact promoted inputs and a provenance manifest;
-- `cluster/` for figure-specific remote extraction/evaluation;
-- `notes/STATE.md` for current status and verification;
-- `z-old/` for retired visual versions;
-- the current rendered PNG(s).
+- the plotting code;
+- `preproc_data/` with the small input files and a manifest saying where each one came from;
+- `cluster/` for jobs needed only by this figure;
+- `notes/STATE.md` for status and checks;
+- `z-old/` for old versions;
+- the current PNG.
 
-The analysis tree remains the scientific record. The preprint folder contains only the data and code needed to reproduce the curated figure, with links back to the originating analyses.
+The analysis folders remain the full record. The preprint folder only holds the data and code needed to rebuild the paper figure, with links back to the analyses it came from.

@@ -1,10 +1,10 @@
 # Model collections
 
-Create one directory per model family or training campaign. Each registered run should record:
+Make one folder per model family or training batch. Each run should record:
 
-- immutable run/checkpoint hash;
-- architecture and recipe;
-- dataset/split and seed;
+- its fixed run/checkpoint hash;
+- architecture and training recipe;
+- dataset, split, and seed;
 - code commit;
-- metrics artifact and weights location;
-- whether the artifact is public, lab-only, or local-only.
+- where its metrics and weights are stored;
+- whether the weights are public, lab-only, or local-only.

@@ -1,54 +1,52 @@
 ---
 name: empirical-march
-description: Use for creating, extending, auditing, stopping, or handing off a numbered scientific analysis under analyses/takeN.
+description: Use for creating, extending, checking, stopping, or handing off a numbered analysis under analyses/takeN.
 ---
 
 # Empirical march
 
-The numbered analysis tree is an append-only chain of questions. One folder should answer one main question with one main evidentiary point.
+The numbered analyses are a chain of questions. New ones are added at the end; old ones are not rewritten. Each folder answers one main question.
 
-## Before work
+## Before starting
 
-1. Read the root and analysis `AGENTS.md` files.
-2. Read the analysis `notes/plan.md`, `notes/STATE.md`, and latest report.
-3. Restate the question, comparison, fixed inputs, exclusions, and pass/fail criterion.
-4. Search prior analyses, the registry, cluster queue/accounting, and stored outputs for duplicate work.
-5. If the result would require changing the criterion after seeing data, stop and record the proposed change before running it.
+1. Read the root and `analyses/` `AGENTS.md` files.
+2. Read the analysis's `notes/plan.md`, `notes/STATE.md`, and latest report.
+3. Restate the question, comparison, fixed inputs, exclusions, and pass/fail rule.
+4. Check earlier analyses, the registry, the cluster queue and job history, and stored outputs for work that has already been done.
+5. If you want to change the pass/fail rule after seeing data, stop and write down the proposed change before running anything.
 
-## Folder contract
+## Folder layout
 
 ```text
 NN_question_slug/
-├── scripts/          local programs, SLURM files, rosters, report builder
-├── results/          JSON/CSV/TSV/NPZ summaries small enough to track
-├── figures/          rendered evidence
+├── scripts/          code, SLURM files, condition lists, report builder
+├── results/          small JSON/CSV/TSV/NPZ summaries
+├── figures/          rendered figures
 ├── notes/
-│   ├── plan.md       pre-stated question and decision rule
-│   ├── STATE.md      current resumable truth
-│   └── decisions.md  durable rationale
-├── report.md         narrative source
-└── report.html       rebuilt human-readable record
+│   ├── plan.md       question and pass/fail rule, written first
+│   ├── STATE.md      current status
+│   └── decisions.md  why things were decided
+├── report.md         report text
+└── report.html       built from report.md
 ```
 
-## During work
+## While working
 
-- Write deterministic outputs to named destinations; do not use an anonymous scratch file as the only copy.
-- Record seed, dataset/split, checkpoint hash, code commit, command/config, date, and storage location.
-- Log cluster job IDs immediately after submission.
-- Preserve failed outputs when they explain a decision; label them clearly.
-- Update `STATE.md` at batch boundaries, not after a long chat has already become the only record.
+- Write outputs to named files. Don't leave a temporary scratch file as the only copy.
+- Record the seed, dataset and split, checkpoint hash, code commit, command or config, date, and storage path.
+- Record cluster job IDs as soon as you submit.
+- Keep failed outputs if they explain a decision, and label them.
+- Update `STATE.md` after each batch of work, not only at the end of a long session.
 
-## Evidence gate
+## Before calling it done
 
-Before calling an analysis done:
+- The pass/fail rule was applied exactly as written, or any change is stated up front.
+- Every number that matters is in a small result file or table.
+- Every result that matters has a figure, or a reason it doesn't need one.
+- Each figure comes from a script and named inputs.
+- The report states the result, the main caveat, and the decision.
+- `STATE.md` says done, stopped, or superseded, and names the next question.
 
-- the stated criterion is evaluated exactly as written, or the deviation is prominent;
-- every consequential number is in a small result file or table;
-- every consequential result has a figure or explicit reason it does not need one;
-- the figure traces to a script and inputs;
-- the report states the result, caveat, and decision;
-- `STATE.md` says done/stopped/superseded and names the next question.
+## New analysis or new take
 
-## Escalation into a new analysis or take
-
-Create the next numbered folder when the scientific question changes. Start a new `takeN` when the organizing thesis, dataset regime, or evidentiary standard changes. Never renumber old work to manufacture a cleaner history.
+Make the next numbered folder when the question changes. Start a new `takeN` when the main question, the type of data, or the standard of evidence changes. Never renumber old work to make the history look tidier.

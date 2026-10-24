@@ -1,3 +1,3 @@
 # Figure 1
 
-This folder owns one manuscript figure. Keep its plotting/assembly source here, exact promoted inputs in `preproc_data/`, figure-specific remote extraction in `cluster/`, current provenance and verification in `notes/STATE.md`, and retired renders in `z-old/`.
+Everything for one paper figure. Plotting code goes here, its exact input files in `preproc_data/`, cluster jobs needed only for this figure in `cluster/`, status and checks in `notes/STATE.md`, and old renders in `z-old/`.

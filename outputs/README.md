@@ -1,3 +1,3 @@
 # Outputs
 
-Exports intended for collaborators, talks, submissions, or archival delivery. Generated work should remain reproducible from the inner project. Large exports are ignored by default; explicitly add only the deliverables that belong in Git.
+Files for collaborators, talks, submissions, or archiving. Anything here should be reproducible from the project code. Large exports are ignored by Git by default; add only the files that belong in the repository.

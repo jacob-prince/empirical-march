@@ -1,3 +1,3 @@
 # Results
 
-No empirical result belongs to the bootstrap map. Add a small machine-readable project manifest here if useful.
+This starter analysis has no results. A small project manifest can go here if useful.

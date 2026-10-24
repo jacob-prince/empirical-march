@@ -23,7 +23,7 @@ def main() -> None:
             state_path = analysis / "notes" / "STATE.md"
             state = state_path.read_text() if state_path.exists() else ""
             status = field(state, "Status", "not recorded")
-            question_match = re.search(r"## Question and criterion\s+(.+?)(?=\n## |\Z)", state, re.S)
+            question_match = re.search(r"## Question and pass/fail rule\s+(.+?)(?=\n## |\Z)", state, re.S)
             summary = " ".join(question_match.group(1).split()) if question_match else "No question recorded."
             rows.append(
                 f'<tr><td>{escape(analysis.name[:2])}</td><td><a href="{escape(analysis.name)}/report.html">{escape(analysis.name)}</a></td>'
@@ -35,7 +35,7 @@ def main() -> None:
 body{{font:15px/1.5 Arial,Helvetica,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem;color:#181818}}
 table{{border-collapse:collapse;width:100%}}th,td{{text-align:left;padding:.55rem;border-bottom:1px solid #ddd;vertical-align:top}}th{{border-bottom:2px solid #333}}a{{color:#0645ad;text-decoration:none}}a:hover{{text-decoration:underline}}
 </style></head><body><h1>{escape(take.name)} analysis reports</h1><p>Generated from each numbered folder's report and STATE.md.</p>
-<table><tr><th>#</th><th>Folder</th><th>Status</th><th>Question/current criterion</th></tr>{body}</table></body></html>"""
+<table><tr><th>#</th><th>Folder</th><th>Status</th><th>Question and pass/fail rule</th></tr>{body}</table></body></html>"""
         output = take / "report_index.html"
         output.write_text(html)
         print(output)
