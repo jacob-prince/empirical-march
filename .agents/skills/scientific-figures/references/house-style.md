@@ -1,10 +1,10 @@
-# Jacob scientific figure house style
+# Scientific figure house style
 
 Use this reference for analysis and manuscript figures. Project-specific style helpers and accepted reference figures override generic defaults, but deviations should be deliberate and recorded.
 
 ## Visual target
 
-The target is the AccentuateVVS/VisCogNet manuscript look: sparse, figure-first, and readable without knowing the project.
+The target is a sparse, figure-first manuscript look, readable without knowing the project.
 
 - Prefer a few large, coherent panels over a mosaic of small plots.
 - Use real example stimuli when possible. Avoid cartoon substitutes for inputs the model actually saw.
@@ -51,7 +51,7 @@ Figure and panel titles name the analysis, not the outcome.
 
 - Good figure title: `Inset targeting by training task`
 - Good panel title: `Encoding score` with qualifier `Natural test images`
-- Bad title: `The dorsal model is significantly better`
+- Bad title: `Model A is significantly better`
 - Bad title: `Accuracy, targeting, and ablation results across seven models`
 
 Prefer a centered two-line panel title: a short noun phrase plus an optional smaller qualifier. Do not put methods, pass numbers, or results in titles.
@@ -104,7 +104,7 @@ When the reader needs the experimental or model logic, use panel **a** as the sc
 - Walk left-to-right through stimulus → model/manipulation → measurement/readout.
 - Use real stimuli and the same geometry used by the model.
 - Use numbered black step circles or another restrained sequence cue only when the temporal order matters.
-- Use bold flow arrows and stable architectural colors. In the VisCogNet grammar: ventral blue, dorsal orange/purple, feedback red, feature taps dashed blue, readout/selected output teal.
+- Use bold flow arrows and stable architectural colors: give each component one color and keep it across every figure.
 - Keep labels to a few words. Name the data panels the schematic feeds, such as `(b, c)`.
 - Avoid decorative brain icons or architectural detail that does not affect the test.
 

@@ -1,6 +1,6 @@
 # Cannon / Harvard FASRC setup
 
-This documents the non-secret parts of Jacob's current cluster workflow. Paths and account availability can change; verify them before launching a new project.
+This documents the non-secret parts of the lab's cluster workflow. Paths and account availability can change; verify them before launching a new project.
 
 ## Authentication and TOTP
 
@@ -50,7 +50,7 @@ Keep a reproducible lock file in Git and the environment on the cluster project 
 
 ## SLURM policy
 
-Jacob can use both `kempner_konkle_lab` and `konkle_lab` accounts. The included `submit_fast.sh` performs `sbatch --test-only` across configured candidate partitions and submits to the earliest estimated start. Its defaults mirror the VisCogNet policy: prefer Kempner H100, consider standard/requeue GPUs, and use test partitions for short work.
+Lab members can typically use both `kempner_konkle_lab` and `konkle_lab` accounts. The included `submit_fast.sh` performs `sbatch --test-only` across configured candidate partitions and submits to the earliest estimated start. Its defaults prefer Kempner H100, consider standard/requeue GPUs, and use test partitions for short work.
 
 Use requeue partitions only when the program writes periodic checkpoints and resumes the same run ID correctly. Otherwise set `NOREQUEUE=1`. Record partition, account, resources, dependency, array-to-condition mapping, and job ID in the analysis `STATE.md`.
 

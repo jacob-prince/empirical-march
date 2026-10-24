@@ -1,6 +1,6 @@
 ---
 name: scientific-figures
-description: Create or edit Jacob-style scientific analysis and manuscript figures, including panel design, house styling, captions, provenance, rendering, and visual verification. Use for plots, schematics, figure assembly, figure reports, and preprint-figure promotion. Do not use for slide-deck layout or generic product/dashboard charts.
+description: Create or edit house-style scientific analysis and manuscript figures, including panel design, house styling, captions, provenance, rendering, and visual verification. Use for plots, schematics, figure assembly, figure reports, and preprint-figure promotion. Do not use for slide-deck layout or generic product/dashboard charts.
 ---
 
 # Scientific figures

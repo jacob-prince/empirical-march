@@ -1,6 +1,6 @@
-# Jacob agentic research-development template
+# empirical-march
 
-This repository is a reusable, empty version of the working pattern used in VisCogNet. It is designed for a scientific project that begins as a question, expands through many numbered empirical analyses, and eventually contracts into a small set of defensible preprint figures.
+This repository is a reusable, empty template for agent-driven scientific projects. It is designed for a scientific project that begins as a question, expands through many numbered empirical analyses, and eventually contracts into a small set of defensible preprint figures.
 
 The central idea is simple: **the filesystem is the project memory**. Chat history is transient. A result is not part of the project until its question, provenance, decision, and current status are written into the folder that owns it.
 
@@ -81,7 +81,7 @@ There are two complementary control systems.
 **Reusable skills.** `.agents/skills/*/SKILL.md` describes workflows that recur across locations:
 
 - `empirical-march`: create, run, document, stop, and hand off a numbered analysis;
-- `scientific-figures`: reproduce the Jacob/NRJ figure grammar, manage figure provenance and manuscript promotion, and verify every render at final size;
+- `scientific-figures`: reproduce the house figure grammar, manage figure provenance and manuscript promotion, and verify every render at final size;
 - `cannon-cluster`: authenticate safely, choose storage and partitions, submit, monitor, and record cluster work.
 
 The `.claude/skills` entries point to the same canonical files so Codex and Claude do not develop competing rules. The scientific-figure skill routes to detailed house-style and figure-lifecycle references, including exact print geometry, type scale, title grammar, baseline handling, captions, preprint promotion, and live-viewer verification.
@@ -105,7 +105,7 @@ Long reasoning belongs in `notes/decisions.md` or a topic-specific note. Chronol
 
 See [`docs/CLUSTER.md`](docs/CLUSTER.md) and `code/project-dev/cluster/`.
 
-Jacob's current Harvard FASRC pattern uses the `cannon` SSH alias for `login.rc.fas.harvard.edu`, a TOTP helper at `~/totp/scripts/start-ssh`, and SSH connection sharing (`ControlMaster` + `ControlPersist`). Run `start-ssh` once; later `ssh`, `scp`, and `rsync` calls reuse the authenticated control socket. `stop-ssh` closes it. GPU-node aliases may use `ProxyJump cannon`.
+The lab's Harvard FASRC pattern uses the `cannon` SSH alias for `login.rc.fas.harvard.edu`, a TOTP helper at `~/totp/scripts/start-ssh`, and SSH connection sharing (`ControlMaster` + `ControlPersist`). Run `start-ssh` once; later `ssh`, `scp`, and `rsync` calls reuse the authenticated control socket. `stop-ssh` closes it. GPU-node aliases may use `ProxyJump cannon`.
 
 No password, TOTP seed, generated code, private key, AWS credential, or signed URL belongs in this repository. Only the setup pattern and non-secret host aliases are documented.
 
@@ -113,7 +113,7 @@ The cluster template separates durable code (`/n/holylabs`), temporary/high-volu
 
 ## Live figure page and agent chat
 
-`code/project-dev/analyses/preprint_figures/take1` contains a working, standard-library-only version of the VisCogNet live manuscript page.
+`code/project-dev/analyses/preprint_figures/take1` contains a working, standard-library-only live manuscript page.
 
 ```bash
 cd code/project-dev/analyses/preprint_figures/take1
@@ -121,7 +121,7 @@ python3 server.py 8767
 # open http://127.0.0.1:8767
 ```
 
-The page renders `manuscript.json`, lets Jacob edit headings/captions/notes in place, and writes saved changes atomically. The chat pane appends requests to `inbox.jsonl`. An active coding agent watches that file, edits plotting sources or `manuscript.json`, rebuilds the figure, then calls `./reply.sh "..."` (`say.sh` is a compatibility alias); the page notices the changed manuscript and image and refreshes. `working.sh` updates the pulsing progress indicator.
+The page renders `manuscript.json`, lets you edit headings/captions/notes in place, and writes saved changes atomically. The chat pane appends requests to `inbox.jsonl`. An active coding agent watches that file, edits plotting sources or `manuscript.json`, rebuilds the figure, then calls `./reply.sh "..."` (`say.sh` is a compatibility alias); the page notices the changed manuscript and image and refreshes. `working.sh` updates the pulsing progress indicator.
 
 This is deliberately a local file bridge, not an embedded model API. It keeps the figure source, the editorial conversation, and the current manuscript state in one inspectable folder while leaving authentication and agent execution to the surrounding Codex/Claude session. Runtime inbox/outbox/status files are ignored by Git.
 
@@ -144,4 +144,4 @@ Track code, small results, configuration, manifests, captions, status notes, ver
 
 ## Provenance of this template
 
-Built from the VisCogNet workspace and `viscognet-dev` analysis conventions as they existed on 2026-10-24: numbered `take1`/`take2` analyses, per-analysis `scripts/results/figures/notes/report.html`, `STATE.md` handoffs, separate `preprint_figures/takeN` promotion, Cannon SLURM launchers, and the file-backed take3 HTML manuscript/chat viewer. Secrets and project-specific scientific content were intentionally excluded.
+Built from the analysis conventions of an active research workspace as they existed on 2026-10-24: numbered `take1`/`take2` analyses, per-analysis `scripts/results/figures/notes/report.html`, `STATE.md` handoffs, separate `preprint_figures/takeN` promotion, Cannon SLURM launchers, and the file-backed HTML manuscript/chat viewer. Secrets and project-specific scientific content were intentionally excluded.

@@ -40,14 +40,14 @@ The page does not invoke a model API. It is a transparent communication queue be
 
 ## Edit loop
 
-1. Jacob edits a heading, caption, or note and clicks **Save**, or sends a chat message.
+1. The user edits a heading, caption, or note and clicks **Save**, or sends a chat message.
 2. The server atomically writes `manuscript.json` and appends a compact record to `inbox.jsonl`.
 3. The agent reads the request and calls `./working.sh "rebuilding Figure 2"`.
 4. The agent edits source/data, runs the figure script, visually inspects the render, and updates the figure path/caption in `manuscript.json`.
 5. The agent calls `./reply.sh "Figure 2 rebuilt; shortened the caption and corrected the shared color scale."`.
 6. Browser polling sees the document version change, refreshes the figure, displays the reply, and returns the status dot to idle.
 
-If Jacob has unsaved browser edits while the document changes on disk, the page warns instead of silently replacing them.
+If the user has unsaved browser edits while the document changes on disk, the page warns instead of silently replacing them.
 
 ## Figure-folder contract
 

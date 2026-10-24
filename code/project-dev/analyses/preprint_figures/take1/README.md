@@ -1,6 +1,6 @@
 # Preprint figures, take1
 
-This is a generic version of the VisCogNet live-editable manuscript page.
+This is a generic live-editable manuscript page.
 
 ```bash
 python3 server.py 8767
