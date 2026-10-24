@@ -1,0 +1,38 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local secrets and machine-specific environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+
+# Model and training artifacts
+*.ckpt
+*.pth
+*.pth.tar
+*.safetensors
+cluster/logs/
+slurm-*.out
+slurm-*.err
+
+# Large/raw workspace outputs are external by default
+outputs/*
+!outputs/README.md
+codex_outputs/*
+!codex_outputs/README.md
+
+# Live figure-viewer transport (editorial content stays in document.json)
+**/preprint_figures/**/inbox.jsonl
+**/preprint_figures/**/outbox.jsonl
+**/preprint_figures/**/status.json
+**/preprint_figures/**/server.log
+**/preprint_figures/**/server.pid
+**/preprint_figures/**/*.tmp

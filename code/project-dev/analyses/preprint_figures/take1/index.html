@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manuscript figures</title>
+<style>
+:root{--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e6;--accent:#f26d2d;--teal:#2a9d8f;--paper:#fff;--bg:#fafafa}
+*{box-sizing:border-box} body{margin:0;font:15px/1.5 Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg)}
+#app{display:grid;grid-template-columns:minmax(0,1fr) 380px;height:100vh} #doc{overflow-y:auto;padding:32px 48px 120px}
+#side{border-left:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;height:100vh}
+h1{font-size:24px;margin:0 0 6px}.plan{color:var(--muted);font-size:14px;margin:0 0 28px;max-width:1000px}
+.fig{margin:0 0 48px;max-width:1100px}.fig h2{font-size:18px;margin:10px 0}.fig img{display:block;width:100%;border:1px solid var(--line);background:#fff}
+.placeholder{display:grid;place-items:center;min-height:220px;border:1px dashed #bbb;color:var(--muted);background:#fff}.meta{font-size:12px;color:var(--muted);margin:4px 0 10px}
+.cap,.notes{white-space:pre-wrap;max-width:1000px;margin:0 0 10px}.notes{color:var(--muted);font-size:14px;border-left:3px solid var(--line);padding-left:12px;min-height:24px}
+[contenteditable]{outline:none;border-radius:4px;padding:2px 4px;margin-left:-4px;transition:background .15s}[contenteditable]:hover{background:#fff4ee}[contenteditable]:focus{background:#fff;box-shadow:0 0 0 2px #f8c9b3}
+details.archive{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;opacity:.85}details summary{cursor:pointer;font-weight:600;color:var(--muted)}
+#bar{position:fixed;left:0;bottom:0;width:calc(100% - 380px);padding:12px 48px;background:#fff;border-top:1px solid var(--line);display:flex;gap:12px;align-items:center}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}button:disabled{opacity:.45;cursor:default}
+#status{color:var(--muted);font-size:13px}#status.dirty{color:var(--accent)}#side header{padding:14px 16px;border-bottom:1px solid var(--line);font-weight:600}#side header small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+#dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#b8b8bd;margin-right:8px}.working #dot{background:var(--accent);animation:pulse 1s ease-in-out infinite}.working header{background:#fff4ee}.working #state{color:var(--accent)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+#log{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}.msg{padding:8px 12px;border-radius:12px;max-width:95%;white-space:pre-wrap;font-size:14px}.msg.me{align-self:flex-end;background:#fff0e8}.msg.agent{align-self:flex-start;background:#edf7f5}.msg.sys{align-self:center;background:none;color:var(--muted);font-size:12px}.msg time{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+#compose{border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:8px}#chat{flex:1;font:inherit;resize:none;height:72px;padding:8px;border:1px solid var(--line);border-radius:8px}
+@media(max-width:850px){#app{display:block;height:auto}#doc{padding:24px 18px 100px}#side{height:55vh;border-left:0;border-top:1px solid var(--line)}#bar{width:100%;padding:10px 18px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <main id="doc"></main>
+  <aside id="side">
+    <header><span id="dot"></span>Talk to the figure agent<small id="state">idle</small></header>
+    <div id="log"></div>
+    <div id="compose"><textarea id="chat" placeholder="e.g. Make Figure 1's comparison visually obvious and shorten the caption. Enter sends; Shift+Enter adds a line."></textarea><button id="send">Send</button></div>
+  </aside>
+</div>
+<div id="bar"><button class="primary" id="save" disabled>Save changes</button><button id="reload" hidden>Reload from disk</button><span id="status">loading</span></div>
+<script>
+let doc=null,version=null,dirty=false,outboxN=0;
+const $=selector=>document.querySelector(selector);
+const esc=value=>(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function editable(cls,path,text,tag='div'){return `<${tag} class="${cls}" contenteditable="plaintext-only" data-field="${path}">${esc(text)}</${tag}>`}
+function render(){
+  let html=editable('', 'title', doc.title, 'h1')+editable('plan','plan',doc.plan);
+  doc.figures.forEach((figure,index)=>{
+    const visual=figure.png?`<img src="/file?p=${encodeURIComponent(figure.png)}&v=${version}" alt="${esc(figure.id)}">`:'<div class="placeholder">figure in progress</div>';
+    html+=`<section class="fig" data-index="${index}">${visual}${editable('',`figures.${index}.heading`,figure.heading,'h2')}<div class="meta">${esc(figure.png||'no render yet')}${figure.source?' · source: '+esc(figure.source):''}</div>${editable('cap',`figures.${index}.caption`,figure.caption)}${editable('notes',`figures.${index}.notes`,figure.notes)}</section>`;
+  });
+  html+='<details class="archive"><summary>Retired figures and archive</summary>';
+  (doc.retired||[]).forEach(figure=>{html+=`<section class="fig"><h2>${esc(figure.heading||figure.id)}</h2>${figure.png?`<img src="/file?p=${encodeURIComponent(figure.png)}&v=${version}" alt="${esc(figure.id)}">`:''}<div class="meta">${esc(figure.png||'')}</div><div class="cap">${esc(figure.caption||'')}</div><div class="notes">${esc(figure.notes||'')}</div></section>`});
+  html+='</details>'; $('#doc').innerHTML=html;
+  $('#doc').querySelectorAll('[contenteditable]').forEach(element=>element.addEventListener('input',()=>setDirty(true)));
+}
+function collect(){const copy=JSON.parse(JSON.stringify(doc));$('#doc').querySelectorAll('[contenteditable]').forEach(element=>{const path=element.dataset.field.split('.');let cursor=copy;while(path.length>1)cursor=cursor[path.shift()];cursor[path[0]]=element.innerText.replace(/\n$/,'')});return copy}
+function setDirty(value){dirty=value;$('#save').disabled=!value;$('#status').textContent=value?'unsaved edits':'saved';$('#status').className=value?'dirty':''}
+async function load(){const response=await(await fetch('/api/doc')).json();doc=response.doc;version=response.version;render();setDirty(false);$('#reload').hidden=true;document.title=doc.title}
+async function save(){const next=collect();const response=await(await fetch('/api/save',{method:'POST',body:JSON.stringify(next)})).json();doc=next;version=response.version;setDirty(false);addMessage('sys',response.changed.length?'saved: '+response.changed.join(', '):'saved (no changes)')}
+function addMessage(who,text,time){const element=document.createElement('div');element.className='msg '+who;element.textContent=text;if(time){const stamp=document.createElement('time');stamp.textContent=time.slice(11,16);element.appendChild(stamp)}$('#log').appendChild(element);$('#log').scrollTop=1e9}
+async function send(){const text=$('#chat').value.trim();if(!text)return;$('#chat').value='';if(dirty)await save();await fetch('/api/chat',{method:'POST',body:JSON.stringify({text})});addMessage('me',text,new Date().toISOString())}
+async function poll(){try{
+  const latest=await(await fetch('/api/doc')).json();
+  if(latest.version!==version){if(!dirty){doc=latest.doc;version=latest.version;const scroll=$('#doc').scrollTop;render();$('#doc').scrollTop=scroll;addMessage('sys','page updated from disk')}else{$('#status').textContent='unsaved edits; document also changed on disk';$('#reload').hidden=false}}
+  const status=await(await fetch('/api/status')).json();$('#side').className=status.state==='working'?'working':'';$('#state').textContent=status.state==='working'?'Agent is working'+(status.note?': '+status.note:''):'idle — ask for edits or new figures';
+  const outbox=await(await fetch('/api/outbox?n='+outboxN)).json();outbox.messages.forEach(message=>addMessage('agent',message.text,message.t));outboxN=outbox.n;
+}catch(error){$('#status').textContent='server unreachable'}}
+$('#save').onclick=save;$('#reload').onclick=load;$('#send').onclick=send;$('#chat').addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}});document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key==='s'){event.preventDefault();if(dirty)save()}});window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue=''}});load().then(()=>setInterval(poll,1500));
+</script>
+</body>
+</html>
