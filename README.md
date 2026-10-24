@@ -39,7 +39,6 @@ The outer repository is the research workspace. The inner `code/project-dev` dir
 │                   ├── index.html  editable figure page + agent chat pane
 │                   ├── server.py   local file-backed bridge
 │                   └── figure1/    source, promoted data, history, cluster jobs
-├── codex_outputs/                  bounded agent deliverables and audits
 ├── labbook/                        durable project log and dashboard
 ├── literature/                     papers, manifests, and reading notes
 ├── meeting-notes/                  dated decisions and presentation records
@@ -82,10 +81,10 @@ There are two complementary control systems.
 **Reusable skills.** `.agents/skills/*/SKILL.md` describes workflows that recur across locations:
 
 - `empirical-march`: create, run, document, stop, and hand off a numbered analysis;
-- `scientific-figures`: produce sparse, legible, traceable figures and verify the render;
+- `scientific-figures`: reproduce the Jacob/NRJ figure grammar, manage figure provenance and manuscript promotion, and verify every render at final size;
 - `cannon-cluster`: authenticate safely, choose storage and partitions, submit, monitor, and record cluster work.
 
-The `.claude/skills` entries point to the same canonical files so Codex and Claude do not develop competing rules. Project-specific figure aesthetics can be added to `scientific-figures` or split into a new house-style skill.
+The `.claude/skills` entries point to the same canonical files so Codex and Claude do not develop competing rules. The scientific-figure skill routes to detailed house-style and figure-lifecycle references, including exact print geometry, type scale, title grammar, baseline handling, captions, preprint promotion, and live-viewer verification.
 
 The folder hierarchy also limits authority. An agent working in one analysis may not refactor project code, launch a new model family, revise another analysis, or promote a result into the manuscript unless the request and the applicable instructions authorize it.
 

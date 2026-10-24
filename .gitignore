@@ -26,8 +26,6 @@ slurm-*.err
 # Large/raw workspace outputs are external by default
 outputs/*
 !outputs/README.md
-codex_outputs/*
-!codex_outputs/README.md
 
 # Live figure-viewer transport (editorial content stays in document.json)
 **/preprint_figures/**/inbox.jsonl

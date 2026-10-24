@@ -10,7 +10,6 @@ The outer workspace holds context that may span more than one codebase. The inne
 | `stimuli/` | shared stimulus assets and provenance | yes, if licensing permits |
 | `assets/` | shared visual/source assets | yes |
 | `outputs/` | exported deliverables | selected only |
-| `codex_outputs/` | bounded agent audits and requested deliverables | selected only |
 | `code/project-dev/src/` | importable project logic | yes |
 | `code/project-dev/tests/` | invariants, parity checks, regression tests | yes |
 | `code/project-dev/registry/` | model/run metadata and public artifact pointers | yes |
