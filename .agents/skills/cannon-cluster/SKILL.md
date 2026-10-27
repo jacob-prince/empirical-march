@@ -1,6 +1,6 @@
 ---
 name: cannon-cluster
-description: Use for anything on the FASRC Cannon cluster (including Kempner partitions): connecting over SSH, copying files, submitting SLURM jobs, monitoring, getting results back, or recovering a dropped connection.
+description: Use for anything on the FASRC Cannon cluster, including the Kempner partitions. Covers connecting over SSH, copying files, submitting SLURM jobs, monitoring, getting results back, and recovering a dropped connection.
 ---
 
 # Cannon cluster
